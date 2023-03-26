@@ -1,0 +1,22 @@
+.hiddenActions {
+	opacity: 0;
+}
+.ResultItem:hover .hiddenActions {
+	opacity: initial;
+}
+.row-badge {
+	font-size: small;
+	opacity: .5;
+}
+.ResultItem,
+.ResultItem__main {
+	align-items: center;
+	display: flex;
+	grid-gap: 1em;
+	justify-content: space-between;
+	padding-bottom: 0;
+	padding-top: 0;
+}
+.ResultItem__main {
+	flex-grow: 1;
+}

@@ -36,7 +36,13 @@ const config = {
 		}
 	},
 	wiki: {
-		url: 'https://fallout.fandom.com/ru/wiki/'
+		url: 'https://fallout.fandom.com/ru/wiki/',
+		actions: {
+			edit: '?action=edit',
+			history: '?action=history',
+			raw: '?action=raw',
+			rev: '?oldid=',
+		}
 	}
 }
 

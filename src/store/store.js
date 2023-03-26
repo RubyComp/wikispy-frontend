@@ -1,11 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
+import searchReducer from './searchSlice'
 
 const store = configureStore({
-	// reducer: {
-	// 	title: titleReducer,
-	// 	modal: modalReducer,
-	// 	squarePrice: squarePriceReducer,
-	// }
+	reducer: {
+		search: searchReducer,
+	}
 })
 
 export default store

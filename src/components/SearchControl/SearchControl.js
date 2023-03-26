@@ -1,15 +1,18 @@
 import React from 'react'
-import namespaces from '../../helpers/namespaces'
+import { useSelector } from 'react-redux'
+import allNamespaces from '../../helpers/allNamespaces'
 import CheckList from '../CheckList/CheckList'
+import NSChecksList from '../NSChecksList'
 import RadioList from '../RadioList/RadioList'
+import TypesRadioList from '../TypesRadioList'
 
-// const Select = ({list, inKey, withId}) => {
+// const Select = ({list, lang, withId}) => {
 
 // 	return (
 // 		<Form.Select aria-label="Default select">
 // 			{Object.keys(list).map((id) => (
 // 				<option key={id} value={id}>
-// 					{ (withId ? `${id}: ` : '') + list[id][inKey] }
+// 					{ (withId ? `${id}: ` : '') + list[id][lang] }
 // 				</option>
 // 			))}
 // 		</Form.Select>
@@ -25,27 +28,30 @@ import RadioList from '../RadioList/RadioList'
 // 	}
 // }
 
-const revSearches = {
-	newest: {
-		canonical: 'Last revisions only',
-	},
-	all: {
-		canonical: 'All revisions',
-	},
-	old: {
-		canonical: 'Olden revisions only'
-	}
-}
+// const revSearches = {
+// 	newest: {
+// 		canonical: 'Last revisions only',
+// 	},
+// 	all: {
+// 		canonical: 'All revisions',
+// 	},
+// 	old: {
+// 		canonical: 'Olden revisions only'
+// 	}
+// }
 
-const pageSearches = {
-	master: {
-		canonical: 'Master pages only',
-	},
+const typesList = {
 	all: {
 		canonical: 'Master and Subpages',
+		value: [0, 1]
+	},
+	master: {
+		canonical: 'Master pages only',
+		value: [0]
 	},
 	sub: {
-		canonical: 'Subpages only'
+		canonical: 'Subpages only',
+		value: [1]
 	}
 }
 
@@ -54,41 +60,47 @@ const SearchControl = () => {
 	let commonNamespaces = {}
 	let otherNamespaces = {}
 
-	for (let key in namespaces) {
+	for (let key in allNamespaces) {
 
-		if (namespaces[key].common === true)
-			commonNamespaces[key] = namespaces[key]
+		if (allNamespaces[key].common === true)
+			commonNamespaces[key] = allNamespaces[key]
 		else
-			otherNamespaces[key] = namespaces[key]
+			otherNamespaces[key] = allNamespaces[key]
 
 	}
+
+	const namespaces = useSelector(state => state.search.namespaces)
+	const types = useSelector(state => state.search.types)
 
 	return (
 		<div id="SearchControl" className="mt-2 mb-3">
 
-			{/* <Stack direction="horizontal" gap={5} className="d-flex justify-content-center"> */}
-			<RadioList list={pageSearches} name="page-searches" title="Page types" />
-			<RadioList list={revSearches} name="rev-searches" value="newest" title="Revisons" disabled />
-			{/* </Stack> */}
+			<TypesRadioList
+				title="Page types"
+				list={typesList}
+				lang="canonical"
+				name="page-searches"
+				value={types}
+			/>
+
+			{/* <RadioList list={revSearches} name="rev-searches" value="newest" title="Revisons" disabled /> */}
 
 			<hr />
 
-			<CheckList title="Namespaces" list={commonNamespaces} inKey="canonical" name="major-namespaces" withId />
-			<CheckList title="" list={otherNamespaces} inKey="canonical" name="other-namespaces" withId />
-
-
-			{/* <ListGroup className="detail-card pt-3 pb-4" variant="flush">
-				<ListGroup.Item>
-					<Stack className="align-items-start justify-content-center" direction="horizontal" gap={4}>
-						<div>1</div>
-						<div>1</div>
-						<div>1</div>
-						<div>1</div>
-					</Stack>
-				</ListGroup.Item>
-				<ListGroup.Item>Morbi leo risus</ListGroup.Item>
-				<ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-			</ListGroup> */}
+			<NSChecksList
+				title="Namespaces"
+				list={commonNamespaces}
+				lang="canonical"
+				name="major-namespaces"
+				values={namespaces}
+			/>
+			<NSChecksList
+				title=""
+				list={otherNamespaces}
+				lang="canonical"
+				name="other-namespaces"
+				values={namespaces}
+			/>
 		</div>
 	)
 }

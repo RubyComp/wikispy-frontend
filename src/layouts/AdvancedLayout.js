@@ -5,14 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 const AdvancedLayout = ({head, main, aside}) => {
 	return (
 		<Container id="AdvancedLayout" className="pb-5">
+			{/* <Row>
+			</Row> */}
 			<Row>
-				{head}
-			</Row>
-			<Row>
-				<Col lg="2">
+				<Col lg="3">
 					{aside}
 				</Col>
 				<Col>
+					{head}
 					{main}
 				</Col>
 			</Row>

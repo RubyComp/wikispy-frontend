@@ -1,4 +1,4 @@
-const namespaces = {
+const allNamespaces = {
 	'0': {
 		'canonical': 'Article',
 		'ru': 'Статья',
@@ -167,4 +167,4 @@ const namespaces = {
 	}
 }
 
-export default namespaces
+export default allNamespaces
