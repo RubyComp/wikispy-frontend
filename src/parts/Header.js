@@ -20,10 +20,10 @@ const Header = () => {
 			path: '/search',
 			name: 'Search'
 		},
-		{
-			path: '/stats',
-			name: 'Stats'
-		}
+		// {
+		// 	path: '/stats',
+		// 	name: 'Stats'
+		// }
 	]
 
 	return (

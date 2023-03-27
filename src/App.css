@@ -2,9 +2,9 @@
 	margin: 0;
 	padding: 0;
 }
-#root {
+/* #root {
 	background-color: black;
-}
+} */
 #App dl, #App ol, #App ul {
 	list-style: none;
 	margin: 0;
@@ -14,7 +14,7 @@
 	background-color: whitesmoke;
 	/* background-color: rgb(202, 203, 206); */
 	min-height: 100vh;
-	opacity: .75;
+	/* opacity: .75; */
 }
 label {
 	cursor: pointer;
