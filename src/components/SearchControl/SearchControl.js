@@ -1,44 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import allNamespaces from '../../helpers/allNamespaces'
-import CheckList from '../CheckList/CheckList'
 import NSChecksList from '../NSChecksList'
-import RadioList from '../RadioList/RadioList'
 import TypesRadioList from '../TypesRadioList'
-
-// const Select = ({list, lang, withId}) => {
-
-// 	return (
-// 		<Form.Select aria-label="Default select">
-// 			{Object.keys(list).map((id) => (
-// 				<option key={id} value={id}>
-// 					{ (withId ? `${id}: ` : '') + list[id][lang] }
-// 				</option>
-// 			))}
-// 		</Form.Select>
-// 	)
-// }
-
-// const searchPlaces = {
-// 	title: {
-// 		text: 'Title',
-// 	},
-// 	content: {
-// 		text: 'Content'
-// 	}
-// }
-
-// const revSearches = {
-// 	newest: {
-// 		canonical: 'Last revisions only',
-// 	},
-// 	all: {
-// 		canonical: 'All revisions',
-// 	},
-// 	old: {
-// 		canonical: 'Olden revisions only'
-// 	}
-// }
 
 const typesList = {
 	all: {
@@ -82,9 +46,6 @@ const SearchControl = () => {
 				name="page-searches"
 				value={types}
 			/>
-
-			{/* <RadioList list={revSearches} name="rev-searches" value="newest" title="Revisons" disabled /> */}
-
 			<hr />
 
 			<NSChecksList

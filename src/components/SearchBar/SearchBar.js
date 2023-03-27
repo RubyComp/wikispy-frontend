@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Button, Form, InputGroup } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartBar as searchIcon } from '@fortawesome/free-regular-svg-icons'
@@ -14,8 +14,7 @@ const SearchBar = () => {
 	}
 
 	const btnTitle = 'Search'
-
-	let prepareText = useSelector(state => state.search.prepareText)
+	const prepareText = useSelector(state => state.search.prepareText)
 
 	return (
 		<InputGroup id="SearchBar" className="mb-4">

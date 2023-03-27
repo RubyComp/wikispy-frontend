@@ -12,10 +12,10 @@ const ListItem = ({to, name}) => {
 const Header = () => {
 
 	const navList = [
-		{
-			path: '/',
-			name: 'Home'
-		},
+		// {
+		// 	path: '/',
+		// 	name: 'Home'
+		// },
 		{
 			path: '/search',
 			name: 'Search'

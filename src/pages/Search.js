@@ -9,7 +9,6 @@ import AdvancedLayout from '../layouts/AdvancedLayout'
 import { setLoader, setText, unsetLoader } from '../store/searchSlice'
 
 const NoSearch = () => {
-
 	return (
 		<div className={'w100 d-flex justify-content-center mt-5 loading fs-5'}>
 			Insert text to field and press search button.
@@ -20,7 +19,6 @@ const NoSearch = () => {
 const Search = () => {
 
 	const dispatch = useDispatch()
-
 	const prepareText = useSelector(state => state.search.prepareText)
 
 	const searchSubmit = (event) => {
@@ -41,7 +39,6 @@ const Search = () => {
 	useEffect(() => {
 		if (data) {
 			dispatch(unsetLoader())
-			console.log(data)
 		}
 	}, [data])
 

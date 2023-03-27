@@ -42,7 +42,6 @@ const searchSlice = createSlice({
 			state.namespaces = action.payload
 		},
 		toggleNamespace(state, action) {
-			// console.log('action.payload:', action.payload)
 			const newList = addOrRemoveNumber(action.payload.namespaces, action.payload.ns)
 
 			if (newList.length > 0)
