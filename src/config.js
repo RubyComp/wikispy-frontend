@@ -1,4 +1,4 @@
-const baseApi = 'http://fo.u1796957.isp.regruhosting.ru/api/'
+const baseApi = 'http://api.wikispy.site/'
 
 const config = {
 	api: {
