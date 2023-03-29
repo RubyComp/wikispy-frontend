@@ -43,15 +43,18 @@ const SearchControl = () => {
 		'common': {
 			'title': 'Major namespaces',
 		},
+		'tech': {
+			'title': 'Tech ns'
+		},
 		'talk': {
 			'title': 'Talk ns'
 		},
 		'user': {
 			'title': 'User ns'
 		},
-		'other': {
-			'title': 'Other ns'
-		},
+		// 'other': {
+		// 	'title': 'Other ns'
+		// },
 		'legacy': {
 			'title': 'Legacy ns'
 		},

@@ -10,7 +10,7 @@ import { setLoader, setText, unsetLoader } from '../store/searchSlice'
 
 const NoSearch = () => {
 	return (
-		<div className={'w100 d-flex justify-content-center mt-5 loading fs-5'}>
+		<div className={'w100 d-flex justify-content-center mt-5 fs-5 loading'}>
 			Insert text to field and press search button.
 		</div>
 	)

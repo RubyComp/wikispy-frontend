@@ -42,7 +42,7 @@ const allNamespaces = {
 	'8': {
 		'canonical': 'MediaWiki',
 		'ru': 'MediaWiki',
-		'cat': 'common'
+		'cat': 'tech'
 	},
 	'9': {
 		'canonical': 'MediaWiki talk',
@@ -52,7 +52,7 @@ const allNamespaces = {
 	'10': {
 		'canonical': 'Template',
 		'ru': 'Шаблон',
-		'cat': 'common'
+		'cat': 'tech'
 	},
 	'11': {
 		'canonical': 'Template talk',
@@ -122,7 +122,7 @@ const allNamespaces = {
 	'828': {
 		'canonical': 'Module',
 		'ru': 'Модуль',
-		'cat': 'common'
+		'cat': 'tech'
 	},
 	'829': {
 		'canonical': 'Module talk',
@@ -161,25 +161,28 @@ const allNamespaces = {
 	},
 	'2300': {
 		'canonical': 'Gadget',
-		'ru': 'Гаджет'
+		'ru': 'Гаджет',
+		'cat': 'legacy'
 	},
 	'2301': {
 		'canonical': 'Gadget talk',
 		'ru': 'Обсуждение гаджета',
-		'cat': 'talk'
+		'cat': 'legacy'
 	},
 	'2302': {
 		'canonical': 'Gadget definition',
-		'ru': 'Определение гаджета'
+		'ru': 'Определение гаджета',
+		'cat': 'legacy'
 	},
 	'2303': {
 		'canonical': 'Gadget definition talk',
 		'ru': 'Обсуждение определения гаджета',
-		'cat': 'talk'
+		'cat': 'legacy'
 	},
 	'2900': {
 		'canonical': 'Map',
-		'ru': 'Map'
+		'ru': 'Map',
+		'cat': 'tech'
 	},
 	'2901': {
 		'canonical': 'Map talk',

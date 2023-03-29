@@ -57,7 +57,6 @@ const OrderDirectionBtn = () => {
 	const newValue = (isDesc) ? 'asc' : 'desc'
 
 	const clickHandler = () => {
-		console.log(newValue)
 		dispatch(setDirect(newValue))
 	}
 
