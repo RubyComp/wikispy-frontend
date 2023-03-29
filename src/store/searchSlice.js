@@ -39,7 +39,12 @@ const searchSlice = createSlice({
 			state.types = action.payload
 		},
 		setNamespaces(state, action) {
-			state.namespaces = action.payload
+			state.loader = true
+			const list = action.payload
+			if (Array.isArray(list) && list.length === 0)
+				state.namespaces = [0]
+			else
+				state.namespaces = action.payload
 		},
 		toggleNamespace(state, action) {
 			const newList = addOrRemoveNumber(action.payload.namespaces, action.payload.ns)

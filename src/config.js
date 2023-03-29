@@ -1,4 +1,5 @@
 const baseApi = 'http://api.wikispy.site/'
+// const baseApi = 'http://api.wikispy.test/'
 
 const config = {
 	api: {

@@ -8,3 +8,10 @@
 	font-weight: bold;
 	opacity: .9;
 }
+
+.CheckAll {
+	opacity: 0;
+}
+.CheckList:hover .CheckAll {
+	opacity: 1;
+}

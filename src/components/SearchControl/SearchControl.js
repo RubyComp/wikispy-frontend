@@ -1,6 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import allNamespaces from '../../helpers/allNamespaces'
+import { setNamespaces } from '../../store/searchSlice'
 import NSChecksList from '../NSChecksList'
 import TypesRadioList from '../TypesRadioList'
 
@@ -18,27 +19,70 @@ const typesList = {
 		value: [1]
 	}
 }
+const getNamespacesByList = (list) => {
+	return Object.keys(list).map(Number)
+}
+const objectHasProperty = (obj, name) => {
+	return Object.prototype.hasOwnProperty.call(obj, name)
+}
+const updateList = (arr1, arr2, action) => {
+	if (action === 'add') {
+		const combined = arr1.concat(arr2)
+		const result = combined.filter((value, index) => 
+			combined.indexOf(value) === index
+		)
+		return result
+	}
+	if (action === 'del')
+		return arr1.filter((value) => !arr2.includes(value))
+}
 
 const SearchControl = () => {
 
-	let commonNamespaces = {}
-	let otherNamespaces = {}
-
-	for (let key in allNamespaces) {
-
-		if (allNamespaces[key].common === true)
-			commonNamespaces[key] = allNamespaces[key]
-		else
-			otherNamespaces[key] = allNamespaces[key]
-
+	const namespacesLists = {
+		'common': {
+			'title': 'Major namespaces',
+		},
+		'talk': {
+			'title': 'Talk ns'
+		},
+		'user': {
+			'title': 'User ns'
+		},
+		'other': {
+			'title': 'Other ns'
+		},
+		'legacy': {
+			'title': 'Legacy ns'
+		},
 	}
+
+	const dispatch = useDispatch()
 
 	const namespaces = useSelector(state => state.search.namespaces)
 	const types = useSelector(state => state.search.types)
 
+	const updateNamespaces = (list, action) => {
+		const nsToAction = getNamespacesByList(list)
+		const ns = updateList(namespaces, nsToAction, action)
+		dispatch(setNamespaces(ns))
+	}
+
+	for (let key in allNamespaces) {
+
+		const nsInfo = allNamespaces[key]
+		const catKey = nsInfo['cat'] || 'other'
+		const catData = namespacesLists[catKey]
+
+		if (!objectHasProperty(catData, 'list'))
+			catData['list'] = []
+
+		catData['list'][key] = nsInfo
+
+	}
+
 	return (
 		<div id="SearchControl" className="mt-2 mb-3">
-
 			<TypesRadioList
 				title="Page types"
 				list={typesList}
@@ -46,22 +90,21 @@ const SearchControl = () => {
 				name="page-searches"
 				value={types}
 			/>
-			<hr />
 
-			<NSChecksList
-				title="Namespaces"
-				list={commonNamespaces}
-				lang="canonical"
-				name="major-namespaces"
-				values={namespaces}
-			/>
-			<NSChecksList
-				title=""
-				list={otherNamespaces}
-				lang="canonical"
-				name="other-namespaces"
-				values={namespaces}
-			/>
+			{Object.keys(namespacesLists).map((key) => (
+				<div key={key}>
+					<hr />
+					<NSChecksList
+						key={`${key}-ns`}
+						title={namespacesLists[key]['title']}
+						list={namespacesLists[key]['list']}
+						lang="canonical"
+						name={`${key}-ns`}
+						values={namespaces}
+						checkHandler={updateNamespaces}
+					/>
+				</div>
+			))}
 		</div>
 	)
 }

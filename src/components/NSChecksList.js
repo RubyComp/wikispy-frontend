@@ -43,7 +43,7 @@ const NSChecksList = (props) => {
 	const {list, values} = props
 
 	return (
-		<CheckList>
+		<CheckList {...props}>
 			{Object.keys(list).map((ns) => (
 				<ListItem
 					key={ns}
