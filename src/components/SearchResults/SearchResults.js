@@ -95,7 +95,6 @@ const ResultNote = ({offset = 0, limit = 0, count = 0, text = ''}) => {
 	)
 }
 
-
 const SearchResults = ({data}) => {
 
 	const [showJSON, setShowJSON] = useState(false)

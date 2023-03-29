@@ -3,9 +3,9 @@ import './Pre.css'
 
 const Pre = ({text}) => {
 	return (
-		<pre className="Pre">
+		<textarea className="Pre" disabled>
 			{text}
-		</pre>
+		</textarea>
 	)
 }
 
