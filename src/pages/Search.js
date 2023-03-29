@@ -29,10 +29,11 @@ const Search = () => {
 
 	const text = useSelector(state => state.search.text)
 	const page = useSelector(state => state.search.page)
+	const types = useSelector(state => state.search.types)
 	const namespaces = useSelector(state => state.search.namespaces)
 
 	const url = config.api.search
-	const api = `${url}&text=${text}&page=${page}&nspaces=${namespaces}`
+	const api = `${url}&text=${text}&types=${types}&page=${page}&nspaces=${namespaces}`
 
 	const [data] = useFetch(api)[0]
 
