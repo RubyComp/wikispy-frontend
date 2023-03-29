@@ -21,5 +21,6 @@
 	flex-grow: 1;
 }
 .ResultItem__title {
+	line-height: 1.3em;
 	max-width: 480px;
 }
