@@ -68,11 +68,19 @@ const options = {
 
 const RevsChart = ({data, chartStyle, loading}) => {
 
-	if (Object.keys(data).length) {
+	if (data && Object.keys(data).length) {
 		if (chartStyle == 'bars') {
-			return <Bar data={data} options={options} className={`pb-5 ${loading ? 'loading' : ''}`} />
+			return <Bar
+				data={data}
+				options={options}
+				className={`pb-5 ${loading ? 'loading' : ''}`}
+			/>
 		} else {
-			return <Line data={data} options={options} className={`pb-5 ${loading ? 'loading' : ''}`} />
+			return <Line
+				data={data}
+				options={options}
+				className={`pb-5 ${loading ? 'loading' : ''}`}
+			/>
 		}
 	}
 	else

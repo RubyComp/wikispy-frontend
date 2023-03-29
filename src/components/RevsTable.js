@@ -19,12 +19,10 @@ const convertData = (raw) => {
 	return data
 }
 
-
-
 const Rows = ({data}) => {
 
 	const formatedData = convertData(data).reverse()
-	
+
 	return (
 		<tbody>
 			{formatedData.map((elem, id) => (
@@ -42,7 +40,7 @@ const Rows = ({data}) => {
 
 const RevsTable = ({data, loading}) => {
 
-	if (Object.keys(data).length) {
+	if (data && Object.keys(data).length) {
 		return (
 			<Table striped bordered className={loading ? 'loading' : ''}>
 				<thead>
