@@ -90,7 +90,6 @@ const SearchControl = () => {
 				name="page-searches"
 				value={types}
 			/>
-
 			{Object.keys(namespacesLists).map((key) => (
 				<div key={key}>
 					<hr />

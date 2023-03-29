@@ -1,14 +1,13 @@
-import React/*, { useEffect }*/ from 'react'
-import { Button, ButtonGroup, ListGroup } from 'react-bootstrap'
+import React from 'react'
+import { Button, ButtonGroup, ListGroup, Stack } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import getNameSpaceTitle from '../../utility/namespaces'
-// import config from '../../config'
 import wikiUrl from '../../utility/wikiUrl'
 import Loader from '../Loader/Loader'
 import NamespacePrefix from '../NamespacePrefix'
+import OrderControl from '../OrderControl'
 import Pagination from '../Pagination'
 import './SearchResults.css'
-
 
 const PageIdSuffix = ({id}) => {
 	return (
@@ -89,7 +88,7 @@ const ResultNote = ({offset = 0, limit = 0, count = 0, text = ''}) => {
 	const pos = `${offset + 1}-${last}`
 
 	return (
-		<div className="mb-2">
+		<div>
 			Results: {pos} / <b>{count}</b>, for <i>{text}</i>
 		</div>
 	)
@@ -119,14 +118,20 @@ const SearchResults = ({data}) => {
 	// 	// window.scrollTo(0, 0)
 	// }, [])
 
+
 	return (
 		<>
-			<ResultNote
-				offset={offset}
-				limit={limit}
-				count={count}
-				text={text}
-			/>
+			<Stack direction="horizontal" gap={3} className="mb-2">
+				<ResultNote
+					offset={offset}
+					limit={limit}
+					count={count}
+					text={text}
+				/>
+				<div className="ms-auto">
+					<OrderControl />
+				</div>
+			</Stack>
 			<ResultList list={list} />
 			<Pagination paginator={paginator} />
 		</>

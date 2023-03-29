@@ -44,6 +44,12 @@ const config = {
 			raw: '?action=raw',
 			rev: '?oldid=',
 		}
+	},
+	orders: {
+		id: 'Id',
+		title: 'Title',
+		ns: 'Namespace',
+		lastrev: 'Edit Time',
 	}
 }
 

@@ -18,8 +18,10 @@ const searchSlice = createSlice({
 		text: '',
 		page: 1,
 		prepareText: '',
-		namespaces: [0,1,2],
+		namespaces: [0],
 		types: 'all',
+		order: 'id',
+		direct: 'desc',
 		loader: true
 	},
 	reducers: {
@@ -27,16 +29,27 @@ const searchSlice = createSlice({
 			state.prepareText = action.payload
 		},
 		setText(state, action) {
+			state.loader = true
 			state.text = action.payload
 		},
 		setPage(state, action) {
+			state.loader = true
 			state.page = action.payload
 		},
 		setLoader(state) {
 			state.loader = true
 		},
 		setTypes(state, action) {
+			state.loader = true
 			state.types = action.payload
+		},
+		setOrder(state, action) {
+			state.loader = true
+			state.order = action.payload
+		},
+		setDirect(state, action) {
+			state.loader = true
+			state.direct = action.payload
 		},
 		setNamespaces(state, action) {
 			state.loader = true
@@ -47,6 +60,7 @@ const searchSlice = createSlice({
 				state.namespaces = action.payload
 		},
 		toggleNamespace(state, action) {
+			state.loader = true
 			const newList = addOrRemoveNumber(action.payload.namespaces, action.payload.ns)
 
 			if (newList.length > 0)
@@ -67,6 +81,8 @@ export const {
 	setPage,
 	setLoader,
 	setTypes,
+	setOrder,
+	setDirect,
 	setNamespaces,
 	toggleNamespace,
 	unsetLoader
