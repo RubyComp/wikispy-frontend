@@ -11,7 +11,7 @@ const AdvancedLayout = ({head, main, aside}) => {
 				<Col lg="3">
 					{aside}
 				</Col>
-				<Col>
+				<Col lg="9">
 					{head}
 					{main}
 				</Col>

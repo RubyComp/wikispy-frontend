@@ -1,0 +1,10 @@
+.Pre {
+	background-color: white;
+	border-color: silver;
+	border-style: dashed;
+	border-width: 1px;
+	max-height: 60vh;
+	padding: .5em .8em;
+	tab-size: 4;
+	width: 100%;
+}

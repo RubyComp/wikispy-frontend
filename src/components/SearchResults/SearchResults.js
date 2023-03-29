@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, ButtonGroup, ListGroup, Stack } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import getNameSpaceTitle from '../../utility/namespaces'
@@ -7,6 +7,7 @@ import Loader from '../Loader/Loader'
 import NamespacePrefix from '../NamespacePrefix'
 import OrderControl from '../OrderControl'
 import Pagination from '../Pagination'
+import Pre from '../Pre/Pre'
 import './SearchResults.css'
 
 const PageIdSuffix = ({id}) => {
@@ -34,8 +35,8 @@ const ResultItem = ({elem}) => {
 	return (
 		<ListGroup.Item className="ResultItem">
 			<div className="ResultItem__main">
-				<div>
-					<NamespacePrefix id={elem.ns}/>{elem.title} <PageIdSuffix id={elem.id}/>
+				<div className="ResultItem__title">
+					<NamespacePrefix id={elem.ns}/>{elem.title}&nbsp;<PageIdSuffix id={elem.id}/>
 				</div>
 				
 				<ButtonGroup className="hiddenActions">
@@ -94,8 +95,10 @@ const ResultNote = ({offset = 0, limit = 0, count = 0, text = ''}) => {
 	)
 }
 
+
 const SearchResults = ({data}) => {
 
+	const [showJSON, setShowJSON] = useState(false)
 	const isLoaded = useSelector(state => state.search.loader)
 
 	if(!data || data.length < 1 || isLoaded)
@@ -112,12 +115,11 @@ const SearchResults = ({data}) => {
 	const paginator = data['paginator']
 	const limit = paginator['limit']
 	const offset = paginator['offset']
-	
+
 	// useEffect(() => {
 	// 	console.log('————:', 'effect')
 	// 	// window.scrollTo(0, 0)
 	// }, [])
-
 
 	return (
 		<>
@@ -128,10 +130,17 @@ const SearchResults = ({data}) => {
 					count={count}
 					text={text}
 				/>
+				<Button
+					variant="link"
+					size="sm"
+					onClick={() => {setShowJSON(!showJSON)}}>
+						JSON
+				</Button>
 				<div className="ms-auto">
 					<OrderControl />
 				</div>
 			</Stack>
+			{showJSON ? <Pre text={JSON.stringify(list, null, '\t')} /> : ''}
 			<ResultList list={list} />
 			<Pagination paginator={paginator} />
 		</>

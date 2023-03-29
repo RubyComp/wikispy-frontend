@@ -20,3 +20,6 @@
 .ResultItem__main {
 	flex-grow: 1;
 }
+.ResultItem__title {
+	max-width: 480px;
+}
