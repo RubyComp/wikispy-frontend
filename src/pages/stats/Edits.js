@@ -16,7 +16,7 @@ const Edits = () => {
 	const url = config.api.getRevs
 	const api = `${url}&mode=${chartMode}`
 
-	const [data] = useFetch(api)
+	const [data] = useFetch(api)[0]
 
 	useEffect(() => {
 		setLoading(false)
@@ -55,8 +55,15 @@ const Edits = () => {
 					}
 				/>
 			</Stack>
-			<RevsChart data={data} chartStyle={chartStyle} loading={loading} />
-			<RevsTable data={data} loading={loading} />
+			<RevsChart
+				data={data}
+				chartStyle={chartStyle}
+				loading={loading}
+			/>
+			<RevsTable
+				data={data}
+				loading={loading}
+			/>
 		</div>
 	)
 }
