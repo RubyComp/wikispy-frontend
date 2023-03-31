@@ -6,6 +6,7 @@ import RevsTable from '../../components/RevsTable'
 import config from '../../config'
 import useFetch from '../../hooks/useFetch'
 import Title from '../../parts/Title'
+import Loader from '../../components/Loader/Loader'
 
 const Edits = () => {
 
@@ -55,15 +56,16 @@ const Edits = () => {
 					}
 				/>
 			</Stack>
-			<RevsChart
+			{data && data.length ? <RevsChart
 				data={data}
 				chartStyle={chartStyle}
 				loading={loading}
-			/>
-			<RevsTable
+			/> : <Loader />}
+			
+			{/* <RevsTable
 				data={data}
 				loading={loading}
-			/>
+			/> */}
 		</div>
 	)
 }

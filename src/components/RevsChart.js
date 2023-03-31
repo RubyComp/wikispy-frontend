@@ -13,7 +13,34 @@ const addLeadingZero = (number) => {
 }
 
 const options = {
+	elements: {
+		point:{
+			radius: 0
+		}
+	},
 	scales: {
+		edits: {
+			beginAtZero: true,
+			position: 'left',
+			// title: {
+			// 	display: true,
+			// 	text: 'EDITS',
+			// }
+		},
+		users: {
+			beginAtZero: true,
+			position: 'right',
+			max: 600,
+			// title: {
+			// 	display: true,
+			// 	text: 'USERS',
+			// },
+			grid: {
+				display: false,
+				drawOnChartArea: false,
+				drawTicks: false,
+			}
+		},
 		x: {
 			ticks: {
 				callback: function (label) {
@@ -51,15 +78,7 @@ const options = {
 			textAlign: 'left',
 			maxRotation: 0,
 			minRotation: 0
-		},
-		y: {
-			beginAtZero: true,
-			grid: {
-				display: true,
-				drawOnChartArea: true,
-				drawTicks: true,
-			}
-		},
+		}
 	},
 	animation: {
 		duration: 1600,
@@ -68,16 +87,18 @@ const options = {
 
 const RevsChart = ({data, chartStyle, loading}) => {
 
-	if (data && Object.keys(data).length) {
+	// if (data && Object.keys(data).length) {
+	if (data[0]) {
+
 		if (chartStyle == 'bars') {
 			return <Bar
-				data={data}
+				data={data[0]}
 				options={options}
 				className={`pb-5 ${loading ? 'loading' : ''}`}
 			/>
 		} else {
 			return <Line
-				data={data}
+				data={data[0]}
 				options={options}
 				className={`pb-5 ${loading ? 'loading' : ''}`}
 			/>

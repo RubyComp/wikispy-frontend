@@ -2,9 +2,7 @@ import React from 'react'
 import { Table } from 'react-bootstrap'
 
 const convertData = (raw) => {
-
-	const data = raw.labels.map((label, index) => {
-
+	const data = raw[0]['labels'].map((label, index) => {
 		const [month, year] = label.split(';')
 		return [
 			+year,
